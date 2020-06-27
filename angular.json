@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "social-network-client-ang"
+    }
+  },
+  "defaultProject": "social-network-client-ang",
+  "cli": {
+    "analytics": "106ee5e9-9cd5-4d70-b53b-5ca397aa0c8b"
+  }
 }
