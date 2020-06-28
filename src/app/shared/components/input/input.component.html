@@ -1,0 +1,12 @@
+<ng-container>
+  <div class="form-group">
+    <label [for]="name">{{rusName}}</label>
+    <input
+      [id]="name"
+      [name]="name"
+      [(ngModel)]="value"
+      (blur)="onTouched()"
+      class="form-control"
+    />
+  </div>
+</ng-container>

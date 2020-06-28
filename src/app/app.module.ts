@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
@@ -11,6 +11,11 @@ import { StoreModule } from '@ngrx/store';
 import { ROOT_REDUCERS } from './state';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './state/effects/user';
+import { UserService } from './shared/services/user.service';
+
+const appInit = (userService: UserService) => {
+  return () => userService.ping();
+};
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +31,13 @@ import { UserEffects } from './state/effects/user';
     }),
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appInit,
+      deps: [UserService],
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

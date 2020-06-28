@@ -12,6 +12,7 @@ import {
 import { Store } from '@ngrx/store';
 import { IState } from '..';
 import { UserInfo } from 'src/app/shared/models/entities/userInfo.class';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class UserEffects {
@@ -41,6 +42,7 @@ export class UserEffects {
               })
             );
             localStorage.setItem('jwt', response.jwt);
+            this.router.navigateByUrl('/main');
             return setInfoMessage({
               infoMessage: new InfoMessage(
                 'Авторизация прошла успешно!',
@@ -63,6 +65,7 @@ export class UserEffects {
   constructor(
     private actions$: Actions,
     private userService: UserService,
-    private store: Store<IState>
+    private store: Store<IState>,
+    private router:Router
   ) {}
 }

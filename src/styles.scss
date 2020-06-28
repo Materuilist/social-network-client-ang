@@ -1,0 +1,21 @@
+@import "./variables.scss";
+
+body{
+    background-color: $light-background;
+    font-family: $ff;
+    height: 100vh;
+}
+
+button.btn{
+    background-color: $more-rich-color;
+    color:$more-light-color;
+    // outline-color: $more-rich-color;
+    &:focus{
+        outline: none;
+        box-shadow: none;
+    }
+    &:hover{
+        color: $light-color;
+        box-shadow: 0 0 10px $more-rich-color;
+    }
+}

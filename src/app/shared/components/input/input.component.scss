@@ -1,0 +1,6 @@
+@import "../../../../variables.scss";
+
+input:focus, input:active{
+    outline: none;
+    box-shadow: 0 0 10px $more-rich-color;
+}

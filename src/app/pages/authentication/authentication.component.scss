@@ -1,0 +1,25 @@
+@import "../../../variables.scss";
+
+.form-container {
+  position: relative;
+  & > form {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: fit-content;
+  }
+}
+
+p {
+  cursor: pointer;
+  text-decoration: underline;
+  color: $rich-color;
+  width: fit-content;
+  font-size: 1.2 * $fs;
+  &:hover {
+    color: $more-rich-color;
+  }
+}
