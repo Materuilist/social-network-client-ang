@@ -1,0 +1,13 @@
+@import "../../../../variables.scss";
+
+.navbar{
+    background-color: $rich-color;
+    height: $header-height;
+}
+.container{
+    height: 85%;
+}
+.logo{
+    border-radius: 50%;
+    cursor: pointer;
+}

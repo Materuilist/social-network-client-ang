@@ -21,6 +21,7 @@ export class UserService extends ApiService {
       const cleanUp = () => {
         this.store.dispatch(setUserInfo({ userInfo: null }));
         localStorage.removeItem('jwt');
+        this.router.navigateByUrl('/auth');
       };
       const jwt = localStorage.getItem('jwt');
       if (!jwt) {

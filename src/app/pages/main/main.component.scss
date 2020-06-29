@@ -1,0 +1,15 @@
+@import "../../../variables.scss";
+
+.link{
+    color:$rich-color;
+    padding: 15px 0 15px 10px;
+    outline: none;
+    cursor: pointer;
+    transition: all .1s linear;
+    &:hover, &Active{
+        background-color: $light-color;
+    }
+    &:hover{
+        opacity: .7;
+    }
+}

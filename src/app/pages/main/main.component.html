@@ -1,1 +1,13 @@
-<p>main works!</p>
+<app-header></app-header>
+<div class="container">
+  <div class="row pt-5">
+    <div class="col-3">
+      <p routerLink="profile" class="link mb-0" routerLinkActive="linkActive">Профиль</p>
+      <p routerLink="friends" class="link mb-0" routerLinkActive="linkActive">Друзья</p>
+      <p routerLink="chat" class="link mb-0" routerLinkActive="linkActive">Сообщения</p>
+    </div>
+    <div class="col-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

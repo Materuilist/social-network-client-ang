@@ -8,12 +8,17 @@ import { map, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { IState } from 'src/app/state';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
   protected url: string = 'http://localhost:3200/';
 
-  constructor(private http: HttpClient, protected store:Store<IState>) {}
+  constructor(
+    private http: HttpClient,
+    protected store: Store<IState>,
+    protected router: Router
+  ) {}
 
   private joinPath(path: string): string {
     return this.url.concat(path);

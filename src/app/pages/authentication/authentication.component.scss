@@ -18,7 +18,7 @@ p {
   text-decoration: underline;
   color: $rich-color;
   width: fit-content;
-  font-size: 1.2 * $fs;
+  font-size: 1.2rem;
   &:hover {
     color: $more-rich-color;
   }
