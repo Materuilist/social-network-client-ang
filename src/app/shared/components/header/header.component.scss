@@ -1,13 +1,30 @@
 @import "../../../../variables.scss";
 
-.navbar{
-    background-color: $rich-color;
-    height: $header-height;
+.navbar {
+  background-color: $rich-color;
+  height: $header-height;
 }
-.container{
-    height: 85%;
+.container {
+  height: 85%;
 }
-.logo{
-    border-radius: 50%;
+.logo {
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.dropdown-menu{
+    background-color: $light-color;
+}
+
+span.dropdown-item{
     cursor: pointer;
+    color:$rich-color;
+    &:hover{
+        opacity: .7;
+        background-color: $light-color;
+    }
 }

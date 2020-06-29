@@ -15,6 +15,12 @@ export class UserService extends ApiService {
     });
   }
 
+  public logout(){
+    localStorage.removeItem('jwt');
+    this.store.dispatch(setUserInfo({userInfo:null}));
+    this.router.navigateByUrl('/auth')
+  }
+
   public async ping() {
     let interval: NodeJS.Timeout;
     const checkValidity = new Observable((subscriber) => {

@@ -1,8 +1,34 @@
 <nav class="navbar pl-5">
   <div class="container">
     <div class="row h-100 w-100">
-      <div class="col-12 h-100">
+      <div class="col-12 h-100 d-flex justify-content-between">
         <img src="assets/frog-prince.svg" class="logo h-100" />
+        <div class="dropdown h-100">
+          <button
+            class="btn dropdown-toggle h-100"
+            type="button"
+            id="dropdownMenuButton"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            {{ (userInfo$ | async).login
+            }}<img
+              [src]="
+                (userInfo$ | async).avatar === null
+                  ? 'assets/default-avatar.jpg'
+                  : (userInfo$ | async).avatar
+              "
+              alt="avatar"
+              class="h-100 px-2 avatar"
+            />
+          </button>
+          <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+            <span class="dropdown-item" routerLink="/main/profile">Профиль</span>
+            <div class="dropdown-divider"></div>
+            <span class="dropdown-item" (click)="logout()">Выход</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
