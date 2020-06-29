@@ -8,6 +8,7 @@
   height: 85%;
 }
 .logo {
+  outline: none;
   cursor: pointer;
   border-radius: 50%;
 }
@@ -23,6 +24,7 @@
 span.dropdown-item{
     cursor: pointer;
     color:$rich-color;
+    outline: none;
     &:hover{
         opacity: .7;
         background-color: $light-color;

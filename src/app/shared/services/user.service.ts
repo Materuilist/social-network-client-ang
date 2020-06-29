@@ -3,8 +3,10 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { setUserInfo } from 'src/app/state/actions/user';
 import { UserInfo } from '../models/entities/userInfo.class';
-import { setLoading } from 'src/app/state/actions/layout';
+import { setLoading, setInfoMessage } from 'src/app/state/actions/layout';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { InfoMessage, InfoMessageTypes } from '../models/UI/info-message.class';
 
 @Injectable({ providedIn: 'root' })
 export class UserService extends ApiService {
@@ -15,10 +17,29 @@ export class UserService extends ApiService {
     });
   }
 
-  public logout(){
+  public logout() {
     localStorage.removeItem('jwt');
-    this.store.dispatch(setUserInfo({userInfo:null}));
-    this.router.navigateByUrl('/auth')
+    this.store.dispatch(setUserInfo({ userInfo: null }));
+    this.router.navigateByUrl('/auth');
+  }
+
+  public updateInfo(info: any) {
+    this.store.dispatch(setLoading({isLoading:true}))
+    return this.post('user/update', info).pipe(
+      tap((response) => {
+        if (typeof response === 'string') {
+          this.store.dispatch(
+            setInfoMessage({
+              infoMessage: new InfoMessage(response, InfoMessageTypes.Error),
+            })
+          );
+        } else {
+          localStorage.setItem('jwt', response.token);
+          this.store.dispatch(setUserInfo({userInfo:response.userInfo}));
+          this.store.dispatch(setLoading({isLoading:false}));
+        }
+      })
+    );
   }
 
   public async ping() {

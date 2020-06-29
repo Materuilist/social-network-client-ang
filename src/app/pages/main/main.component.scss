@@ -1,5 +1,9 @@
 @import "../../../variables.scss";
 
+.main{
+    height: 100vh - $header-height;
+}
+
 .link{
     font-size: 1.2rem;
     color:$rich-color;
