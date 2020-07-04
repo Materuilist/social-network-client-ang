@@ -5,8 +5,9 @@ import { setUserInfo } from 'src/app/state/actions/user';
 import { UserInfo } from '../models/entities/userInfo.class';
 import { setLoading, setInfoMessage } from 'src/app/state/actions/layout';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
 import { InfoMessage, InfoMessageTypes } from '../models/UI/info-message.class';
+import { IFriendInfo } from '../models/entities/friendInfo.interface';
 
 @Injectable({ providedIn: 'root' })
 export class UserService extends ApiService {
@@ -24,7 +25,7 @@ export class UserService extends ApiService {
   }
 
   public updateInfo(info: any) {
-    this.store.dispatch(setLoading({isLoading:true}))
+    this.store.dispatch(setLoading({ isLoading: true }));
     return this.post('user/update', info).pipe(
       tap((response) => {
         if (typeof response === 'string') {
@@ -35,8 +36,30 @@ export class UserService extends ApiService {
           );
         } else {
           localStorage.setItem('jwt', response.token);
-          this.store.dispatch(setUserInfo({userInfo:response.userInfo}));
-          this.store.dispatch(setLoading({isLoading:false}));
+          this.store.dispatch(setUserInfo({ userInfo: response.userInfo }));
+          this.store.dispatch(setLoading({ isLoading: false }));
+        }
+      })
+    );
+  }
+
+  public getUsers(page: number = 1): Observable<IFriendInfo[]> {
+    this.store.dispatch(setLoading({ isLoading: true }));
+    return this.get(`friends/search?page=${page}`).pipe(
+      map((response) => {
+        this.store.dispatch(setLoading({ isLoading: false }));
+        if (typeof response === 'string') {
+          this.store.dispatch(
+            setInfoMessage({
+              infoMessage: new InfoMessage(response, InfoMessageTypes.Error),
+            })
+          );
+          return null;
+        } else {
+          return response.users.map((item) => ({
+            login: item.login,
+            avatar: item.avatar,
+          }));
         }
       })
     );

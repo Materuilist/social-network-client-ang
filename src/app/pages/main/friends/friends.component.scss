@@ -1,0 +1,23 @@
+@import "../../../../variables.scss";
+
+.linkContainer {
+  transition: all 0.3s linear;
+  color: $rich-color;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  &:hover,
+  &.activeLink {
+    background-color: $rich-color;
+    color: $more-light-color;
+  }
+  &:focus {
+    outline: none;
+  }
+  &:first-child {
+    border-radius: 20px 0 0 0;
+  }
+  &:last-child {
+    border-radius: 0 20px 0 0;
+  }
+}

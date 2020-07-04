@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <img
+        [src]="avatar === null ? 'assets/default-avatar.jpg' : avatar"
+        alt="Аватар"
+      />
+      <span>{{login}}</span>
+    </div>
+    <div class="col-6">
+        <ng-container *ngFor="let button of buttons">
+            <button>
+                
+            </button>
+        </ng-container>
+    </div>
+  </div>
+</div>

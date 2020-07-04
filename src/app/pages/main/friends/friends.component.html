@@ -1,1 +1,25 @@
-<p>friends works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div
+      class="col py-3 text-center linkContainer"
+      routerLink="current"
+      routerLinkActive="activeLink"
+    >Мои друзья</div>
+    <div
+      class="col py-3 text-center linkContainer"
+      routerLink="requests"
+      routerLinkActive="activeLink"
+    >
+      Заявки в друзья
+    </div>
+    <div
+      class="col py-3 text-center linkContainer"
+      routerLink="search"
+      routerLinkActive="activeLink"
+    >
+      Поиск друзей
+    </div>
+  </div>
+</div>
+<hr class="mt-0"/>
+<router-outlet></router-outlet>
