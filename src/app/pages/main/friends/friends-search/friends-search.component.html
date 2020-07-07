@@ -1,1 +1,9 @@
-<p>friends-search works!</p>
+<ng-container *ngIf="!(isLoading$ | async)">
+  <app-friend
+    *ngFor="let friend of users$ | async"
+    [login]="friend.login"
+    [avatar]="friend.avatar"
+    [buttons]="buttons"
+  ></app-friend>
+</ng-container>
+<app-spinner *ngIf="isLoading$ | async"></app-spinner>

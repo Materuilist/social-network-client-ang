@@ -1,0 +1,24 @@
+@import "../../../../variables.scss";
+
+:host{
+    display: block;
+    height: 20%;
+}
+
+.row{
+    background-color: $rich-color;
+    border-radius: 10px;
+}
+
+.img-container{
+    height: 90%;
+}
+
+img{
+    border-radius: 50%;
+}
+
+.login{
+    color:$more-light-color;
+    font-size: 1.1rem;
+}

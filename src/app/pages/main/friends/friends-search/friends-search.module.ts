@@ -13,7 +13,7 @@ import { SpinnerModule } from 'src/app/shared/components/spinner/spinner.module'
     CommonModule,
     FriendsSearchRoutingModule,
     FriendModule,
-    SpinnerModule
+    SpinnerModule,
   ]
 })
 export class FriendsSearchModule { }

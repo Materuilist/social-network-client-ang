@@ -1,18 +1,27 @@
-<div class="container">
-  <div class="row">
-    <div class="col-6">
-      <img
-        [src]="avatar === null ? 'assets/default-avatar.jpg' : avatar"
-        alt="Аватар"
-      />
-      <span>{{login}}</span>
+<div class="container h-100">
+  <div class="row h-100 mx-3 my-2 py-3 align-items-center px-4">
+    <div class="col-6 h-100">
+      <div class="row h-100 align-items-center pl-1">
+        <div class="col-5 img-container">
+          <img
+            [src]="avatar === null ? 'assets/default-avatar.jpg' : avatar"
+            alt="Аватар"
+            class="h-100 mw-100"
+          />
+        </div>
+        <div class="col-7 h-100 d-flex flex-column justify-content-center pl-1">
+          <span class="login">{{ login | uppercase }}</span>
+        </div>
+      </div>
     </div>
-    <div class="col-6">
-        <ng-container *ngFor="let button of buttons">
-            <button>
-                
-            </button>
-        </ng-container>
+    <div class="col-6 h-100 text-right">
+      <button
+        *ngFor="let button of buttons"
+        (click)="button.clickHandler(login)"
+        class="btn"
+      >
+        <mdb-icon fas [icon]="button.icon"></mdb-icon>
+      </button>
     </div>
   </div>
 </div>

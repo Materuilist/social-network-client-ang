@@ -3,7 +3,7 @@ import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {MDBBootstrapModule} from 'angular-bootstrap-md';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,13 +24,13 @@ const appInit = (userService: UserService) => {
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    MDBBootstrapModule.forRoot(),
     StoreModule.forRoot(ROOT_REDUCERS),
     EffectsModule.forRoot([UserEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
     }),
-    // FontAwesomeModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

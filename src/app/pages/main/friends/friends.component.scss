@@ -1,5 +1,11 @@
 @import "../../../../variables.scss";
 
+:host{
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+}
+
 .linkContainer {
   transition: all 0.3s linear;
   color: $rich-color;
